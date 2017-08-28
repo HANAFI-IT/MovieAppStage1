@@ -23,11 +23,11 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
+    final static String api_popular = "http://api.themoviedb.org/3/movie/popular?api_key=580f90d7628d7abbfba2cec11823fbcc";
+    final static String api_toprated = "http://api.themoviedb.org/3/movie/top_rated?api_key=580f90d7628d7abbfba2cec11823fbcc";
     SharedPreferences sharedPreferences;
     JsonParser parser = new JsonParser();
     SharedPreferences.Editor editor;
-    final static String api_popular = "http://api.themoviedb.org/3/movie/popular?api_key=580f90d7628d7abbfba2cec11823fbcc";
-    final static String api_toprated = "http://api.themoviedb.org/3/movie/top_rated?api_key=580f90d7628d7abbfba2cec11823fbcc";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,7 +139,12 @@ public class MainActivity extends AppCompatActivity {
             editor = sharedPreferences.edit();
             editor.putString("staus", "-");
             editor.commit();
-            fav();
+            if (!CheckNetwork.isConnected(getBaseContext())) {
+                Toast.makeText(this, "No internet Connection", Toast.LENGTH_SHORT).show();
+
+            } else {
+                fav();
+            }
             return true;
         }
 

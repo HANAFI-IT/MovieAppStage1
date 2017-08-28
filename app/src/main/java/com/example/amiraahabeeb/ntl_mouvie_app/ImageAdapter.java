@@ -1,6 +1,7 @@
 package com.example.amiraahabeeb.ntl_mouvie_app;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -38,20 +39,14 @@ public class ImageAdapter extends BaseAdapter {
 
     // create a new ImageView for each item referenced by the Adapter
     public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView imageView;
-        if (convertView == null) {
-            // if it's not recycled, initialize some attributes
-            imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(150, 150));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(8, 8, 8, 8);
-        } else {
-            imageView = (ImageView) convertView;
+        if (convertView == null){
+            convertView = ((LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.item_movie,parent,false);
         }
+        ImageView imgView = (ImageView) convertView.findViewById(R.id.img_item_poster);
 
-        Picasso.with(mContext).load("http://image.tmdb.org/t/p/w185/" + mouvie_data.get(position).getPoster_path()).into(imageView);
+        Picasso.with(mContext).load("http://image.tmdb.org/t/p/w185/" + mouvie_data.get(position).getPoster_path()).into(imgView);
         //  imageView.setImageResource(mThumbIds[position]);
-        return imageView;
+        return convertView;
     }
 
     // references to our images
