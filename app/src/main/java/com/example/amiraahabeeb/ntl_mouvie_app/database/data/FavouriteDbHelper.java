@@ -14,16 +14,16 @@ public class FavouriteDbHelper extends SQLiteOpenHelper {
 
 
     public final static String DATABASE_NAME = "favoritetabase";
-    public final static int DATABASE_VERSION = 1;
+    public final static int DATABASE_VERSION = 2;
     public final static String TABLE_NAME = "movietable";
-    public final static String UID = "_id";
+//    public final static String UID = "_id";
     public final static String POSTER = "poster";
     public final static String TITEL = "titel";
     public final static String DATE = "date";
     public final static String VOTE = "vote";
     public final static String OVERVIEW = "overview";
     public final static String POSTER_ID = "POSTER_ID";
-    public final static String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + UID + " INTEGER PRIMARY KEY AUTOINCREMENT ," + POSTER + " VARCHAR(255) ," + TITEL + " VARCHAR(255) ," + DATE + " VARCHAR(255) ," + VOTE + " VARCHAR(255) ," + OVERVIEW + " VARCHAR(255) ," + POSTER_ID + " INTEGER);";
+    public final static String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + POSTER_ID  + " INTEGER PRIMARY KEY ," + POSTER + " VARCHAR(255) ," + TITEL + " VARCHAR(255) ," + DATE + " VARCHAR(255) ," + VOTE + " VARCHAR(255) ," + OVERVIEW + " VARCHAR(255));";
     public final static String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
     public Context context;
 

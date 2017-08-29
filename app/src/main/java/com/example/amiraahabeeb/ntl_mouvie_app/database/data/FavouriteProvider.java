@@ -103,7 +103,7 @@ public class FavouriteProvider extends ContentProvider {
                 if (_id != -1) {
                     returnedUri = FavouriteContract.FavouriteEntry.buildDetailsUri(_id);
                 } else {
-                    throw new android.database.SQLException("Failed to insert row into " + uri);
+                    returnedUri = null;
                 }
                 break;
             default:

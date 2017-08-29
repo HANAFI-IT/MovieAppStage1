@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
     private void fav() {
 
 
-        String[] column = {FavouriteDbHelper.UID, FavouriteDbHelper.POSTER, FavouriteDbHelper.TITEL, FavouriteDbHelper.DATE, FavouriteDbHelper.VOTE, FavouriteDbHelper.OVERVIEW, FavouriteDbHelper.POSTER_ID};
+        String[] column = {FavouriteDbHelper.POSTER, FavouriteDbHelper.TITEL, FavouriteDbHelper.DATE, FavouriteDbHelper.VOTE, FavouriteDbHelper.OVERVIEW, FavouriteDbHelper.POSTER_ID};
         Cursor cursor = getContentResolver().query(
                 FavouriteContract.FavouriteEntry.CONTENT_URI,   // The content URI of the words table
                 column,                        // The columns to return for each row
@@ -168,12 +168,12 @@ public class MainActivity extends AppCompatActivity {
         final List<Mouvie_data> movieDataList = new ArrayList<>();
         if (cursor.moveToFirst()) {
             do {
-                String POSTER = cursor.getString(1);
-                String TITEL = cursor.getString(2);
-                String DATE = cursor.getString(3);
-                String VOTE = cursor.getString(4);
-                String OVERVIE = cursor.getString(5);
-                String poster_id = cursor.getInt(6) + "";
+                String POSTER = cursor.getString(0);
+                String TITEL = cursor.getString(1);
+                String DATE = cursor.getString(2);
+                String VOTE = cursor.getString(3);
+                String OVERVIE = cursor.getString(4);
+                String poster_id = cursor.getInt(5) + "";
                 movieDataList.add(new Mouvie_data(POSTER, OVERVIE, DATE, TITEL, VOTE, poster_id));
             } while (cursor.moveToNext());
         }
