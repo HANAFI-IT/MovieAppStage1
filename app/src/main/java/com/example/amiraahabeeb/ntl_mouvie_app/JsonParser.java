@@ -91,6 +91,7 @@ public class JsonParser {
                 ImageAdapter adapter = new ImageAdapter(context, data);
                 GridView imageGridView = (GridView) context.findViewById(R.id.gridview);
                 imageGridView.setAdapter(adapter);
+                imageGridView.setSelection(MainActivity.position);
                 imageGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

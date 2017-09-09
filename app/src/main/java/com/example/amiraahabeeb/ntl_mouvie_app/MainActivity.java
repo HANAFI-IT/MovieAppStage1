@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     JsonParser parser = new JsonParser();
     SharedPreferences.Editor editor;
+    static int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if (savedInstanceState != null) {
+            position = savedInstanceState.getInt("myKey",0);
+
+        }
     }
 
     @Override
@@ -64,8 +69,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /*@Override
+    protected void onPause() {
+        super.onPause();
+
+    }*/
+
+    public void onSaveInstanceState(Bundle savedState) {
+
+        super.onSaveInstanceState(savedState);
+
+        // Note: getValues() is a method in your ArrayAdapter subclass
+        GridView gridview = (GridView) findViewById(R.id.gridview);
+        int i = gridview.getFirstVisiblePosition();
+        savedState.putInt("myKey", i);
+
+    }
+
     private void main_grid() {
         GridView gridview = (GridView) findViewById(R.id.gridview);
+
         //   gridview.setAdapter(new ImageAdapter(this, parser.getlist()));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
